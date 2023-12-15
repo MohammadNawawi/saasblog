@@ -19,6 +19,7 @@ export default function Navlinks() {
       Icon: PersonIcon,
     },
   ];
+
   return (
     <div className="flex items-center gap-5 border-b pb-2">
       {links.map(({ href, text, Icon }, index) => {
@@ -27,7 +28,7 @@ export default function Navlinks() {
             href={href}
             key={index}
             className={cn(
-              "flex items-center gap-1 hover:underline transition-all",
+              "flex items-center gap-1 hover:underline transition-all hover:text-violet-500",
               { "text-violet-500 underline": pathname === href }
             )}
           >
