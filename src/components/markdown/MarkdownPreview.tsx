@@ -17,7 +17,7 @@ export default function MarkdownPreview({
   return (
     <Markdown
       rehypePlugins={[rehypeHighlight]}
-      className={cn("space-y-6", className)}
+      className={cn("space-y-6 lg:px-10", className)}
       components={{
         h1: ({ node, ...props }) => {
           return <h1 {...props} className="text-3xl font-bold" />;
