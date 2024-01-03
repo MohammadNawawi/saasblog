@@ -262,7 +262,9 @@ export default function BlogForm({
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+        <Button className="ml-5" type="submit">
+          Submit
+        </Button>
       </form>
     </Form>
   );

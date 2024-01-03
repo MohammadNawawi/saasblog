@@ -2,8 +2,10 @@ import { Button } from "@/components/ui/button";
 import { EyeOpenIcon, Pencil1Icon, TrashIcon } from "@radix-ui/react-icons";
 import React from "react";
 import { Switch } from "@/components/ui/switch";
+import { readBlog } from "@/lib/actions/blog";
 
-export default function BlogTable() {
+export default async function BlogTable() {
+  const { data: blogs } = await readBlog();
   return (
     <div className="overflow-x-auto">
       <div className="border bg-gradient-dark rounded-md w-[900px] md:w-full">
@@ -12,12 +14,16 @@ export default function BlogTable() {
           <h1>Premium</h1>
           <h1>Publish</h1>
         </div>
-        <div className="grid grid-cols-5 p-5">
-          <h1 className="col-span-2">Title</h1>
-          <Switch checked={true} />
-          <Switch checked={false} />
-          <Actions />
-        </div>
+        {blogs?.map((blog, index) => {
+          return (
+            <div className="grid grid-cols-5 p-5" key={index}>
+              <h1 className="col-span-2">{blog.title}</h1>
+              <Switch checked={blog.is_premium} />
+              <Switch checked={blog.is_published} />
+              <Actions />
+            </div>
+          );
+        })}
       </div>
     </div>
   );
